@@ -2,14 +2,15 @@
 """
 Created on Tue Aug 13 16:03:01 2019
 
-@author: Himanshu
+@author: Ajeet Singh Rajpoot
 """
 from flask import Flask, render_template, url_for, request
 import pandas as pd
 import pickle
+import joblib
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.externals import joblib
+
 
 
 app = Flask(__name__)
@@ -33,7 +34,7 @@ def predict():
     X = cv.fit_transform(X)
     from sklearn.model_selection import train_test_split
     X_train, X_test, y_train, y_test = train_test_split(X,y,
-                                                        test_size=0.33,
+                                                        test_size=0.30,
                                                         random_state=42)
     from sklearn.naive_bayes import MultinomialNB
     clf = MultinomialNB()
